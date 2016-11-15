@@ -69,6 +69,7 @@ void main()
 		if (supply>demand)
 		{
 			sum += (x[row][column]*demand);
+			printf("The sum is: %d\n",sum);
 			temp=supply-demand;
 			supply=temp;
 			demand=demand-supply;
@@ -77,12 +78,13 @@ void main()
 				x[q][column]=INT_MAX;
 			}
 			b[column]=0;
-			printf("\nThe sum is: %d\n",sum);
+			
 		
 		}
 		else if(demand>supply)
 		{
 			sum += (x[row][column]*supply);
+			printf("\nThe sum is: %d\n",sum);
 			temp=demand-supply;
 			demand=temp;
 			supply=supply-demand;
@@ -91,12 +93,12 @@ void main()
 				x[row][q]=INT_MAX;
 			}
 			a[row]=0;	
-			printf("\nThe sum is: %d\n",sum);
 			
 		}
 		else if(demand==supply)
 		{
 			sum += (x[row][column]*supply);
+			printf("\nThe sum is: %d\n",sum);
 			temp=demand-supply;
 			demand=temp;
 			supply=supply-demand;
@@ -112,7 +114,6 @@ void main()
 			x[n][column]=INT_MAX;
 			a[row]=0;
 			b[column]=0;
-			printf("\nThe sum is: %d\n",sum);
 			break;
 		}
 		small=70;
