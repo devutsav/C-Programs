@@ -2,8 +2,8 @@
 #include<limits.h>
 void main()
 {
-	int x[20][20],a[20],b[20],v1=0,v2=0,temp=0,t[20][20];
-	int i,j,sum,sum1=0,sum2=0,m,n,small,k,l,row,column,qwe;
+	int x[20][20],a[20],b[20],v1=0,v2=0,temp;
+	int i,j,sum=0,sum1=0,sum2=0,m,n,small=INT_MAX,k,l,row,column,qwe;
 	printf("Enter the no of rows\n");
 	scanf("%d",&n);
 	printf("Enter the no of columns\n");
@@ -16,7 +16,6 @@ void main()
 			scanf("%d",&x[i][j]);
 		}
 	}
-	
 	printf("The cost-matrix is\n");
 	for(i=0;i<n;i++)
 	{
@@ -45,10 +44,9 @@ void main()
 	i=0;
 	j=0;
 	int deg=m+n-1,q;
-	small=1000;
-	for(qwe=0;qwe<deg;qwe++)
+	for(qwe=1;qwe<=(deg);qwe++)
 	{
-		
+		small=INT_MAX;
 		for(i=0;i<n;i++)
 		{
 			for(j=0;j<m;j++)
@@ -56,68 +54,47 @@ void main()
 				if(x[i][j]<small)
 				{
 					small=x[i][j];
-					//t[i][j]=small;
 					row=i;
 					column=j; 
 				}
 			}
 		}
-
 		printf("\nThe smallest : %d\n",small);	
 		int supply=a[row]; //--b
 		int demand=b[column];  // \\a
 		if (supply>demand)
 		{
-			sum += (x[row][column]*demand);
-			printf("The sum is: %d\n",sum);
-			temp=supply-demand;
-			supply=temp;
-			demand=demand-supply;
+			sum = sum + ((x[row][column])*demand);
+			printf("Current sum is: %d\n",sum);
+			a[row]=supply-demand;
+			demand=0;
 			for(q=0;q<n;q++)
 			{	
 				x[q][column]=INT_MAX;
 			}
-			b[column]=0;
-			
-		
 		}
 		else if(demand>supply)
 		{
-			sum += (x[row][column]*supply);
-			printf("\nThe sum is: %d\n",sum);
-			temp=demand-supply;
-			demand=temp;
-			supply=supply-demand;
+			sum = sum + ((x[row][column])*supply);
+			printf("Current sum is: %d\n",sum);
+			b[column]=demand-supply;
+			supply=0;
 			for(q=0;q<m;q++)
 			{	
 				x[row][q]=INT_MAX;
-			}
-			a[row]=0;	
+			}	
 			
 		}
-		else if(demand==supply)
+		else
 		{
-			sum += (x[row][column]*supply);
-			printf("\nThe sum is: %d\n",sum);
-			temp=demand-supply;
-			demand=temp;
-			supply=supply-demand;
-			/*for(q=0;q<n;q++)
-			{	
-				x[q][column]=0;
-			}
-			for(q=0;q<m;q++)
-			{	
-				x[row][q]=0;
-			}*/
+			sum = sum + ((x[row][column])*supply);
+			printf("Current sum is: %d\n",sum);
+			b[column]=0;
+			a[row]=0;
 			x[row][m]=INT_MAX;
 			x[n][column]=INT_MAX;
-			a[row]=0;
-			b[column]=0;
 			break;
 		}
-		small=70;
-			
 	}	
-	printf("\nThe sum is: %d\n",sum);
+	printf("\nThe total sum is: %d\n",sum);
 }
