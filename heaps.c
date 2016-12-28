@@ -55,12 +55,12 @@ int main()
 {
 	int a[]={2,8,87,3,17,12};
 	int size=sizeof(a)/sizeof(a[0]);
-	heapsort(a,size);
+	heapsort(a,size-1);
 	for(i=0;i<size;i++)
 	{
 		printf("%d ",a[i]);
 	}
-  printf("\n");
+        printf("\n");
 	return 0;
 }
 		
