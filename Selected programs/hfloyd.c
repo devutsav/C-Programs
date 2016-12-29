@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include<limits.h>
-#define INFINITY 999
+//#define INFINITY 999
+#define INFINITY 0xfffffff
 int i,j,k;
 void floyd(int cost[401][401],int n)
 {
@@ -21,7 +22,8 @@ void floyd(int cost[401][401],int n)
 }
 int main()
 {
-	int n,e,a,b,c,no,x,y,cost[401][401];
+	int n,e,a,b,c,x,y,cost[401][401];
+	long int no;
 	scanf("%d %d",&n,&e);
 	for(i=1;i<=n;i++)
 	{
@@ -36,7 +38,7 @@ int main()
 		cost[a][b]=c;
 	}
 	floyd(cost,n);
-	scanf("%d",&no);
+	scanf("%ld",&no);
 	for(i=1;i<=no;i++)
 	{
 		scanf("%d %d",&x,&y);
