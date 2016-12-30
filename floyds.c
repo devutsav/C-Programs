@@ -75,8 +75,8 @@ int main()
 #include <stdio.h>
 #include<limits.h>
 #define INFINITY 999
-int i,j,k;
-void floyd(int cost[401][401],int n,int p[10][10])
+int i,j,k,p[100][100];
+void floyd(int cost[401][401],int n)
 {
 	for(k=1;k<=n;k++)
 	{
@@ -85,18 +85,25 @@ void floyd(int cost[401][401],int n,int p[10][10])
 			for(j=1;j<=n;j++)
 			{	
 				
-				if(cost[i][j]>cost[i][k]+cost[k][j])
-				{
-					cost[i][j]=cost[i][k]+cost[k][j];
-					p[i][j]=k;
+				if(i!=j){
+					if(cost[i][j]>cost[i][k]+cost[k][j])
+					{
+						cost[i][j]=cost[i][k]+cost[k][j];
+						p[i][j]=k;
+					}
 				}
+				else if (i==j)
+				{				
+					cost[i][j]=0;
+				}	
 			}
 		}
 	}
 }
 int main()
 {
-	int n,e,a,b,c,x,y,cost[401][401],p[10][10];
+	int n,e,a,b,c,x,y,cost[401][401];
+	printf("Enter the vertex and edges\n");
 	scanf("%d %d",&n,&e);
 	for(i=1;i<=n;i++)
 	{
@@ -106,37 +113,39 @@ int main()
 			p[i][j]=0;
 		}
 	}
+	printf("Enter the vertex and edges\n");
 	for(i=1;i<=e;i++)
 	{
 		scanf("%d %d %d",&a,&b,&c);
 		cost[a][b]=c;
 	}
-	printf("The cost matrix is\n");
+	printf("\nThe cost matrix is\n");
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
 			printf("%d \t",cost[i][j]);
 		}
+		printf("\n");
 	}
-	floyd(cost,n,p);
-	printf("The reduced cost matrix is\n");
+	floyd(cost,n);
+	printf("\nThe reduced cost matrix is\n");
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
 			printf("%d \t",cost[i][j]);
 		}
+		printf("\n");
 	}
-	printf("The path matrix is\n");
+	printf("\nThe path matrix is\n");
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
 			printf("%d \t",p[i][j]);
 		}
+		printf("\n");
 	}
 	return 0;
 }
-
-
