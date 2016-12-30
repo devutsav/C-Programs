@@ -1,2 +1,2 @@
 # C-Programs
-Some basic algoithm programs written in C 
+Some basic algorithm programs written in C 
