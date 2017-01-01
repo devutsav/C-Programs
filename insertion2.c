@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 int i,j;
 int insertion(int a[],int size)
 {
