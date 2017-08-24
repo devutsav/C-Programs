@@ -17,7 +17,7 @@ void insert()
 		rear=rear+1;
 		arr[rear]=a;
 	}
-	else //if(front <= rear || front>rear)
+	else //if(front <= rear)
 	{
 		rear=rear+1;
 		arr[rear]=a;
