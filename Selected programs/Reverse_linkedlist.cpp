@@ -8,7 +8,7 @@
      struct Node *next;
   }
 */
-Node* Reverse(Node *head)
+/*Node* Reverse(Node *head)
 {
   // Complete this method
    Node *t1, *t2, *t3;
@@ -22,4 +22,31 @@ Node* Reverse(Node *head)
            
    }
    return t1;
+}*/
+Node* Reverse(Node *head)
+{
+  // Complete this method
+    Node* current, *nxt, *prev;
+    if (head == NULL) {
+        return NULL;
+    }
+    
+    if (head->next == NULL) {
+        return head;
+    }
+    current = head;
+    prev=NULL;
+    while(current->next != NULL)
+    {
+        nxt = current->next;
+        current->next = prev;
+        prev = current;
+        current = nxt;
+    }
+    nxt = current->next;
+    current->next = prev;
+    prev = current;
+    head = prev;
+    return head;
+    
 }
