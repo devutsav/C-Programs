@@ -1,3 +1,5 @@
+//Find the number of leaf nodes in a full k-ary tree of height m.
+
 #include <stdio.h>
 #include<math.h>
 
