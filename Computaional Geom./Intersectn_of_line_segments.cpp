@@ -56,6 +56,13 @@ int main() {
 	printf("Intersect");
 	else printf("Does not Intersect");
 	
+	struct point p1={0,0},q1={10,0};   //Collinear case (intersects)
+	struct point p2={1,0},q2={11,0};
+	
+	if(ifintersect(p1,q1,p2,q2))
+	printf("Intersect");
+	else printf("Does not Intersect");
+	
 	return 0;
 
 }
