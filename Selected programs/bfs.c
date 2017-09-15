@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -26,14 +25,16 @@ int main()
 	while(k<n)
 	{
 		for(j=1;j<=n;j++)
+		{
 			if(cost[v][j]!=0 && visited[j]!=1)
 			{
 				visited[j]=1;
 				q[rare++]=j;
-			}	
-			v=q[front++];
-			printf("%d ",v);
-			k++;
+			}
+		}
+		v=q[front++];
+		printf("%d ",v);
+		k++;
 	}
 	return 0;
 }
