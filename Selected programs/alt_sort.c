@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>   //Brute force 
 #include <stdbool.h>
 #include <limits.h>
 void rearrange(int arr[], int n)
