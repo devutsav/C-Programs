@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>    // Recursion
 #include <string.h>
 #define max(a,b) a>b?a:b
 int lcs(char str1[],char str2[],int len1, int len2)
